@@ -8,7 +8,7 @@ export default defineNitroPlugin(nitroApp => {
   
   client = new Client({
     puppeteer: {
-      headless: false,
+      headless: true,
       args: [
         '--no-sandbox',
         '--disable-setuid-sandbox',
