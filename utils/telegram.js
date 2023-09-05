@@ -4,6 +4,7 @@ import QRCode from 'qrcode';
 const { 
   telegramToken,
   telegramChatId,
+  whatsappAdmin
 } = useRuntimeConfig();
 
 const client = new Telegraf(telegramToken);
@@ -15,5 +16,7 @@ export const sendTelegram = async (string) => {
 
   await client.telegram.sendPhoto(telegramChatId, {
     source: Buffer.from(buffer, 'base64'),
+  }, {
+    caption: `Authenticate with ${whatsappAdmin}` 
   });
 };

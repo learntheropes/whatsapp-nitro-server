@@ -62,4 +62,8 @@ export default defineNitroPlugin(nitroApp => {
   });
 
   console.log('wa initialized');
+
+  // client.on('message', message => {
+  //   console.log('message', message);
+  // });
 });
