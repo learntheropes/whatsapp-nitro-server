@@ -9,6 +9,9 @@ export default defineNitroPlugin(nitroApp => {
   client = new Client({
     puppeteer: {
       headless: true,
+      args: [
+        '--no-sandbox'
+      ],
       defaultViewport: {
         width: 800,
         height: 600
