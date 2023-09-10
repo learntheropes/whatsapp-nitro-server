@@ -4,13 +4,12 @@
     "prepare": "nitropack prepare",
     "dev": "nitropack dev",
     "build": "nitropack build",
-    "start": "node .output/server/index.mjs",
-    "kill": "sudo kill -9 `sudo lsof -t -i:3000`"
+    "start": "node .output/server/index.mjs"
   },
   "dependencies": {
     "nitropack": "latest",
     "qrcode": "^1.5.0",
     "telegraf": "^4.8.5",
-    "whatsapp-web.js": "^1.22.2-alpha.0"
+    "whatsapp-web.js": "1.22.2-alpha.0"
   }
 }

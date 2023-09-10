@@ -5,15 +5,10 @@ import QRCode from 'qrcode';
 export let client;
 
 export default defineNitroPlugin(nitroApp => {
-  
+
   client = new Client({
     puppeteer: {
       headless: true,
-      args: [
-        '--no-sandbox',
-        '--disable-setuid-sandbox',
-        '--disable-gpu',
-      ],
       defaultViewport: {
         width: 800,
         height: 600
@@ -27,7 +22,7 @@ export default defineNitroPlugin(nitroApp => {
   client.initialize();
 
   client.on('qr', async (qr) => {
-    const qrcode = await QRCode.toString(qr,{
+    const qrcode = await QRCode.toString(qr, {
       type: 'terminal',
       small: true
     });

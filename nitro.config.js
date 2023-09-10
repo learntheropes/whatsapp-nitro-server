@@ -5,6 +5,7 @@ export default defineNitroConfig({
     telegramToken: process.env.TELEGRAM_TOKEN,
     telegramChatId: process.env.TELEGRAM_CHAT_ID,
     whatsappAdmin: process.env.WHATSAPP_ADMIN,
-    whatsappForward : process.env.WHATSAPP_FORWARD
+    whatsappForward : process.env.WHATSAPP_FORWARD,
+    puppeteerExecutablePath: process.env.PUPPETEER_EXECUTABLE_PATH
   },
 });
