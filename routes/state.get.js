@@ -1,7 +1,7 @@
 import { client } from '~/plugins/1.whatsappClient'
 
 
-export default eventHandler(async event => {
+export default eventHandler(async _event => {
 
   try {
 
