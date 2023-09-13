@@ -20,7 +20,10 @@ To post a message send a `POST` request to this endpoint where `$PHONE_NUMBER` i
 
 ### Webhooks
 
-If you specify a `WEBHOOK_URL` in the env variables, a post request will be sent to `WEBHOOK_URL/$SENDER_PHONE_NUMBER` where `$SENDER_PHONE_NUMBER` is the phone number that sent the message, with a body containing the whatsapp message object such as:
+If you specify a `WEBHOOK_URL` in the env variables, a post request will be sent to `WEBHOOK_URL/$SENDER_PHONE_NUMBER` where `$SENDER_PHONE_NUMBER` is the phone number that sent the message, with a body containing 
+<details>
+<summary>the whatsapp message object.</summary>
+
 ```json
 {
   "_data": {
@@ -94,7 +97,7 @@ If you specify a `WEBHOOK_URL` in the env variables, a post request will be sent
   "links": []
 }
 ```
-
+</details>
 
 ## Status
 
