@@ -1,5 +1,22 @@
 {
-  "private": true,
+  "name": "whatsapp-nitro-server",
+  "version": "1.0.0",
+  "description": "A unjs/nitro server to send and receive Whatsapp chat messages",
+  "keywords": [
+    "whatsapp",
+    "whatsapp-web",
+    "unjs-nitro",
+    "bot"
+  ],
+  "author": "Learntheropes",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/learntheropes/whatsapp-nitro-server.git"
+  },
+  "bugs": {
+    "url": "https://github.com/learntheropes/whatsapp-nitro-server/issues"
+  },
   "scripts": {
     "prepare": "nitropack prepare",
     "dev": "nitropack dev",
