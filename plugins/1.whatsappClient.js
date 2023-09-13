@@ -1,6 +1,12 @@
 import whatsappWeb from 'whatsapp-web.js';
 const { Client, LocalAuth } = whatsappWeb;
 import QRCode from 'qrcode';
+import { ofetch } from 'ofetch';
+
+const { 
+  webhook ,
+  telegramToken
+} = useRuntimeConfig()
 
 export let client;
 
@@ -61,7 +67,16 @@ export default defineNitroPlugin(nitroApp => {
 
   console.log('wa initialized');
 
-  // client.on('message', message => {
-  //   console.log('message', message);
-  // });
+  client.on('message', async message => {
+    
+    // console.log('message', JSON.stringify(message, null, 2));
+    
+    if (webhook) await ofetch(`${webhook}/+${message.from.replace('@c.us', '')}`, {
+      method: 'POST',
+      body: message,
+      headers: {
+        'authorization': `token ${telegramToken}`
+      }
+    })
+  });
 });
