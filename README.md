@@ -12,8 +12,8 @@ Any request must contain a 'authorization' header with `token $TELEGRAM_TOKEN` f
 
 ### Endpoints
 
-- GET `/state/`:  
-It returns the status of the server. 'CONNECTED' means that the server is authenticated and ready to receive requests. Any other status means the opposite.
+- GET `/state`:  
+It returns the status of the server. If the property `state` is equal to `CONNECTED` means that the server is authenticated and ready to receive requests. Any other `state` means the opposite.
 
 - POST `/message/$PHONE_NUMBER`:  
 To post a message send a `POST` request to this endpoint where `$PHONE_NUMBER` is the recipient of the message and the `message` property of the body is the content of the message to send.
