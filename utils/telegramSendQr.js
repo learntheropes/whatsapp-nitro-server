@@ -9,7 +9,7 @@ const {
 
 const client = new Telegraf(telegramToken);
 
-export const sendTelegram = async (string) => {
+export const telegramSendQr = async (string) => {
 
   const img = await QRCode.toDataURL(string);
   const buffer = Buffer.from(img.split("base64,")[1], "base64");

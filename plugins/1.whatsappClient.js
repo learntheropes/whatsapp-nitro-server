@@ -36,7 +36,7 @@ export default defineNitroPlugin(nitroApp => {
       small: true
     });
     console.log(qrcode);
-    await sendTelegram(qr);
+    await telegramSendQr(qr);
   });
   
   client.on('authenticated', session => {
@@ -61,16 +61,15 @@ export default defineNitroPlugin(nitroApp => {
     client.initialize();
   });
   
-  client.on('ready', () => {
-    console.log('wa connected');
+  client.on('ready', async () => {
+    console.log('wa ready');
+    await telegramSendMessage('ready');
   });
 
   console.log('wa initialized');
 
   client.on('message', async message => {
-    
     // console.log('message', JSON.stringify(message, null, 2));
-    
     if (webhook) await ofetch(`${webhook}/+${message.from.replace('@c.us', '')}`, {
       method: 'POST',
       body: message,
