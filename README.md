@@ -117,6 +117,6 @@ On Digital Ocean it can run on a Basic Plan with 512 MB RAM and 1 vCPU (the chea
 
 [![DigitalOcean Referral Badge](https://web-platforms.sfo2.digitaloceanspaces.com/WWW/Badge%202.svg)](https://www.digitalocean.com/?refcode=1930033771d7&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge)
  
- ##License
+ ## License
 
  MIT
