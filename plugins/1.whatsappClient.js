@@ -1,30 +1,36 @@
 import whatsappWeb from 'whatsapp-web.js';
-const { Client, LocalAuth } = whatsappWeb;
+const { Client, RemoteAuth } = whatsappWeb;
+import { MongoStore } from 'wwebjs-mongo';
+import mongoose from 'mongoose';
 import QRCode from 'qrcode';
-import { ofetch } from 'ofetch';
 
 const { 
-  webhook ,
-  telegramToken
+  mongodbUri
 } = useRuntimeConfig()
 
 export let client;
 
-export default defineNitroPlugin(nitroApp => {
+export default defineNitroPlugin(async nitroApp => {
 
-  client = new Client({
+  await mongoose.connect(mongodbUri);
+
+  const store = new MongoStore({ mongoose });
+
+  const client = new Client({
     puppeteer: {
       headless: true,
       args: [
-        '--no-sandbox'
+        '--no-sandbox',
+        '--disable-setuid-sandbox'
       ],
-      defaultViewport: {
-        width: 800,
-        height: 600
+      defaultViewport: { 
+        width: 800, 
+        height: 600 
       }
     },
-    authStrategy: new LocalAuth({
-      dataPath: './temp/'
+    authStrategy: new RemoteAuth({
+      store,
+      backupSyncIntervalMs: 300000
     })
   });
 
@@ -33,6 +39,7 @@ export default defineNitroPlugin(nitroApp => {
   client.on('qr', async (qr) => {
     const qrcode = await QRCode.toString(qr, {
       type: 'terminal',
+      version: 11,
       small: true
     });
     console.log(qrcode);
@@ -55,7 +62,7 @@ export default defineNitroPlugin(nitroApp => {
   client.on('change_state', state => {
     console.log('wa change state', state);
   });
-  
+    
   client.on('disconnected', reason => {
     console.log('wa disconnected', reason);
     client.initialize();
@@ -66,16 +73,14 @@ export default defineNitroPlugin(nitroApp => {
     await telegramSendMessage('ready');
   });
 
+  client.on('remote_session_saved', async () => {
+    console.log('session saved');
+    await telegramSendMessage('session saved');
+});
+
   console.log('wa initialized');
 
   client.on('message', async message => {
     // console.log('message', JSON.stringify(message, null, 2));
-    if (webhook) await ofetch(`${webhook}/+${message.from.replace('@c.us', '')}`, {
-      method: 'POST',
-      body: message,
-      headers: {
-        'authorization': `token ${telegramToken}`
-      }
-    })
   });
 });

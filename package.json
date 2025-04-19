@@ -25,10 +25,12 @@
   },
   "dependencies": {
     "fs": "^0.0.1-security",
+    "mongoose": "^8.13.2",
     "nitropack": "latest",
     "qrcode": "^1.5.0",
     "save": "^2.9.0",
     "telegraf": "^4.8.5",
-    "whatsapp-web.js": "github:learntheropes/whatsapp-web.js"
+    "whatsapp-web.js": "^1.27.0",
+    "wwebjs-mongo": "^1.1.0"
   }
 }

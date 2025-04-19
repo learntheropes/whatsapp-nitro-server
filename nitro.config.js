@@ -6,6 +6,7 @@ export default defineNitroConfig({
     telegramChatId: process.env.TELEGRAM_CHAT_ID,
     whatsappAdmin: process.env.WHATSAPP_ADMIN,
     whatsappForward: process.env.WHATSAPP_FORWARD,
-    webhook: process.env.WEBHOOK_URL
+    webhook: process.env.WEBHOOK_URL,
+    mongodbUri: process.env.MONGODB_URI,
   },
 });
