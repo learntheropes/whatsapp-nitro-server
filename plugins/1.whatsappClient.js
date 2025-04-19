@@ -16,7 +16,7 @@ export default defineNitroPlugin(async nitroApp => {
 
   const store = new MongoStore({ mongoose });
 
-  const client = new Client({
+  client = new Client({
     puppeteer: {
       headless: true,
       args: [
